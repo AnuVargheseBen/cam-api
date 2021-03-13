@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import "./App.css";
+import Camera from "./components/camera/camera";
 
 function App() {
+  const camRef = useRef({});
+
+  function handleScreenshot(){
+    console.log(camRef.current)
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img />
+      
+      <Camera ref={camRef} audio={false} videoConstraints={{ facingMode: "user" }} 
+     />
+     <button onClick={handleScreenshot}>click me dear</button>
     </div>
   );
 }
